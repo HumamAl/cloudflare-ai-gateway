@@ -1,10 +1,15 @@
-import { cn } from "@/lib/utils";
+// NO "use client" — pure JSX, no hooks
+// This component is kept for backwards compatibility.
+// The challenges page uses ChallengeList directly, which renders
+// dark-card styled containers with proper dark-premium treatment.
+
+import type { ReactNode } from "react";
 
 interface ChallengeCardProps {
   title: string;
   description: string;
   outcome?: string;
-  children: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
@@ -17,19 +22,31 @@ export function ChallengeCard({
 }: ChallengeCardProps) {
   return (
     <div
-      className={cn(
-        "bg-card border border-border/60 shadow-[0_1px_2px_0_rgb(0_0_0/0.03)] rounded-lg p-6 space-y-4 hover:border-primary/30 hover:shadow-[0_2px_8px_0_rgb(0_0_0/0.05)] transition-all duration-150",
-        className
-      )}
+      className={`dark-card p-5 space-y-4 ${className ?? ""}`}
     >
       <div>
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-sm text-muted-foreground mt-1">{description}</p>
+        <h2 className="text-base font-semibold leading-tight">{title}</h2>
+        <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+          {description}
+        </p>
       </div>
       {children}
       {outcome && (
-        <div className="pt-2 border-t border-border/60">
-          <p className="text-sm font-medium text-[color:var(--success)]">{outcome}</p>
+        <div
+          className="flex items-start gap-2 rounded-md px-3 py-2"
+          style={{
+            backgroundColor: "color-mix(in oklch, var(--success) 10%, transparent)",
+            borderColor: "color-mix(in oklch, var(--success) 22%, transparent)",
+            borderWidth: "1px",
+            borderStyle: "solid",
+          }}
+        >
+          <p
+            className="text-sm font-medium"
+            style={{ color: "var(--success)" }}
+          >
+            {outcome}
+          </p>
         </div>
       )}
     </div>

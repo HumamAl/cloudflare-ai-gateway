@@ -86,135 +86,122 @@
    Aesthetic [data-theme] blocks below override all other tokens.
    ============================================================ */
 :root {
+  /* ── AESTHETIC: dark-premium / DOMAIN: ai-infrastructure ────────────────
+     Electric indigo primary on near-black canvas.
+     Compact density — 6-item nav for engineering toolchain.
+     Geist Mono critical for all numeric/trace values.               */
+
   /* ── Border Radius ───────────────────────────────────────────
-     Profiles: sharp = 0.25rem | standard = 0.5rem | rounded = 0.75rem
-     Layout Builder sets to match domain personality.            */
-  --radius: 0.5rem;
+     Dark Premium = medium radius (0.75rem). Matches the aesthetic
+     profile and reads as modern without being playful.             */
+  --radius: 0.75rem;
 
-  /* ── Base Surfaces ───────────────────────────────────────── */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --surface-hover: oklch(0.96 0 0);
-  --surface-active: oklch(0.94 0 0);
-
-  /* ── Primary Color ───────────────────────────────────────────
-     !! OVERRIDE REQUIRED — Layout Builder must replace --primary and
-        --primary-h with domain-appropriate oklch values.
-        See references/design-system.md for the 14-domain color table.
-        QA rejects builds where --primary stays oklch(0.205 0 0). !! */
-  --primary: oklch(0.205 0 0);
+  /* ── Primary Color — Electric Indigo ─────────────────────────
+     oklch(0.60 0.22 265): vivid electric indigo.
+     High chroma ensures visibility on near-black surfaces.
+     --primary-h = 265 drives all derived dark surfaces.            */
+  --primary: oklch(0.60 0.22 265);
   --primary-foreground: oklch(0.985 0 0);
-  --primary-h: 270; /* Integer hue extracted from --primary */
+  --primary-h: 265;
+
+  /* ── Dark Surfaces ───────────────────────────────────────── */
+  --background: oklch(0.10 0.02 265);
+  --foreground: oklch(0.93 0 0);
+  --card: oklch(0.13 0.02 265);
+  --card-foreground: oklch(0.93 0 0);
+  --popover: oklch(0.13 0.02 265);
+  --popover-foreground: oklch(0.93 0 0);
+  --surface-hover: oklch(0.15 0.04 265);
+  --surface-active: oklch(0.18 0.04 265);
 
   /* ── Derived Color Tokens ────────────────────────────────── */
   --section-dark: oklch(0.10 0.02 var(--primary-h));
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.16 0.02 265);
+  --secondary-foreground: oklch(0.93 0 0);
+  --muted: oklch(0.20 0.02 265);
+  --muted-foreground: oklch(0.60 0 0);
+  --accent: oklch(0.65 0.18 45);
+  --accent-foreground: oklch(0.10 0 0);
 
   /* ── Semantic Colors ─────────────────────────────────────── */
   --destructive: oklch(0.577 0.245 27.325);
-  --success: oklch(0.627 0.194 149.214);
+  --success: oklch(0.62 0.19 145);
   --success-foreground: oklch(0.985 0 0);
-  --warning: oklch(0.769 0.188 70.08);
-  --warning-foreground: oklch(0.205 0 0);
+  --warning: oklch(0.75 0.18 85);
+  --warning-foreground: oklch(0.10 0 0);
 
   /* ── Borders & Inputs ────────────────────────────────────── */
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.25 0.02 265);
+  --input: oklch(0.20 0.02 265);
+  --ring: oklch(0.60 0.22 265);
 
-  /* ── Chart Colors ────────────────────────────────────────────
-     Layout Builder harmonizes to primary hue. See design-system.md. */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* ── Chart Colors — Harmonized to indigo hue 265 ─────────────
+     chart-1: primary indigo | chart-2: teal shift | chart-3: violet
+     chart-4: amber (Cloudflare brand complement) | chart-5: green  */
+  --chart-1: oklch(0.60 0.22 265);
+  --chart-2: oklch(0.62 0.18 200);
+  --chart-3: oklch(0.55 0.20 290);
+  --chart-4: oklch(0.70 0.18 45);
+  --chart-5: oklch(0.62 0.19 145);
 
-  /* ── Sidebar Colors ──────────────────────────────────────────
-     After color override: --sidebar-primary and --sidebar-ring
-     should match --primary.                                     */
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  /* ── Sidebar Colors ──────────────────────────────────────── */
+  --sidebar: oklch(0.08 0.02 265);
+  --sidebar-foreground: oklch(0.85 0 0);
+  --sidebar-primary: oklch(0.60 0.22 265);
   --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-accent: oklch(0.15 0.02 265);
+  --sidebar-accent-foreground: oklch(0.85 0 0);
+  --sidebar-border: oklch(1 0 0 / 0.08);
+  --sidebar-ring: oklch(0.60 0.22 265);
+  --sidebar-bg: oklch(0.08 0.02 265);
 
   /* ── Surface / Card Tokens ───────────────────────────────────
-     Driven by [data-theme] aesthetic — not overridden per domain.
-     .linear-card and .aesthetic-card read these.                */
+     Dark Premium card: subtle inner glow top edge + faint outer ring.
+     Hover adds depth shadow.                                     */
   --card-border-width: 1px;
-  --card-shadow: none;
-  --card-shadow-hover: none;
+  --card-shadow: 0 0 0 1px oklch(1 0 0 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.08);
+  --card-shadow-hover: 0 0 0 1px oklch(0.60 0.22 265 / 0.30), 0 4px 16px oklch(0 0 0 / 0.35);
   --card-backdrop: none;
   --card-hover-transform: none;
 
-  /* ── Spacing / Density Tokens ────────────────────────────────
-     Layout Builder overrides for compact / standard / spacious feel.
+  /* ── Spacing / Density Tokens — COMPACT ──────────────────────
+     Compact density: tight nav, small card padding, 1rem content.
+     Engineering toolchain — information density over whitespace. */
+  --page-padding: 1rem;
+  --card-padding: 1rem;
+  --card-padding-sm: 0.75rem;
+  --grid-gap: 0.75rem;
+  --section-gap: 1rem;
 
-     Compact:  --nav-item-py: 0.375rem, --content-padding: 1rem,   --card-padding: 1rem
-     Standard: --nav-item-py: 0.5rem,   --content-padding: 1.5rem, --card-padding: 1.5rem
-     Spacious: --nav-item-py: 0.625rem, --content-padding: 2rem,   --card-padding: 1.5rem */
-  --page-padding: 1.5rem;
-  --card-padding: 1.5rem;
-  --card-padding-sm: 1rem;
-  --grid-gap: 1rem;
-  --section-gap: 1.5rem;
-
-  /* ── Layout Tokens ───────────────────────────────────────────
-     Sidebar width presets:
-       Slim:     14rem — compact utility or data-dense apps
-       Standard: 16rem — default
-       Wide:     18rem — complex nav, ERP-style
-
-     Header height presets:
-       Compact:  2.75rem
-       Standard: 3.5rem                                           */
+  /* ── Layout Tokens ───────────────────────────────────────── */
   --sidebar-width: 16rem;
   --sidebar-collapsed-width: 4rem;
   --sidebar-width-mobile: 18rem;
-  --header-height: 3.5rem;
-  --tab-bar-height: 49px;    /* 48px + 1px border */
-  --content-padding: 1.5rem;
-  --nav-item-py: 0.5rem;
+  --header-height: 2.75rem;
+  --tab-bar-height: 49px;
+  --content-padding: 1rem;
+  --nav-item-py: 0.375rem;
 
-  /* Sidebar surface — override to tint sidebar by domain:
-     White (default): oklch(1 0 0)
-     Tinted:          oklch(0.985 0.008 var(--primary-h))
-     Subdued:         oklch(0.97 0.005 var(--primary-h))          */
-  --sidebar-bg: oklch(1 0 0);
-
-  /* Tab bar background — tint to primary hue subtly if desired */
-  --tab-bar-bg: var(--background);
+  /* ── Tab Bar ─────────────────────────────────────────────── */
+  --tab-bar-bg: oklch(0.08 0.02 265 / 0.92);
 
   /* ── Typography Tokens ───────────────────────────────────── */
   --font-display: var(--font-geist-sans);
   --font-body: var(--font-geist-sans);
-  --heading-weight: 700;
-  --heading-tracking: -0.025em;
+  --heading-weight: 600;
+  --heading-tracking: -0.02em;
   --heading-transform: none;
   --body-weight: 400;
   --body-tracking: 0em;
-  --body-leading: 1.625;
+  --body-leading: 1.5;
 
-  /* ── Motion Tokens ───────────────────────────────────────────
-     All transitions in components use these — never hardcode
-     duration-200+ or ease-in values directly.                   */
-  --dur-fast: 100ms;
-  --dur-normal: 150ms;
-  --dur-slow: 250ms;
-  --dur-deliberate: 400ms;
+  /* ── Motion Tokens — INSTANT (50-100ms, ease-out) ────────────
+     AI/ML infrastructure aesthetic: instant feedback, no ceremony.
+     Engineers expect zero-latency UI response.                  */
+  --dur-fast: 60ms;
+  --dur-normal: 100ms;
+  --dur-slow: 150ms;
+  --dur-deliberate: 250ms;
   --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -407,43 +394,53 @@
    Dark canvas, controlled accent light, exclusive feel.
    Best for: AI/ML, cybersecurity, fintech trading, luxury tech.
    Note: Layout Builder sets --primary to a vivid accent.
-         --primary-h must be set for derived dark surfaces.      */
+         --primary-h must be set for derived dark surfaces.
+   For this app: electric indigo oklch(0.60 0.22 265) on near-black.
+   Compact density — engineering toolchain UI.                   */
 [data-theme="dark-premium"] {
   --radius: 0.75rem;
-  --background: oklch(0.08 0.01 var(--primary-h, 250));
-  --foreground: oklch(0.92 0 0);
-  --card: oklch(0.12 0.01 var(--primary-h, 250));
-  --card-foreground: oklch(0.92 0 0);
-  --popover: oklch(0.12 0.01 var(--primary-h, 250));
-  --popover-foreground: oklch(0.92 0 0);
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(1 0 0 / 0.25);
-  --muted: oklch(0.16 0.01 var(--primary-h, 250));
+  /* Primary and surface overrides flow from :root for this app.
+     Theme block re-asserts the dark surface treatment.           */
+  --background: oklch(0.10 0.02 var(--primary-h, 265));
+  --foreground: oklch(0.93 0 0);
+  --card: oklch(0.13 0.02 var(--primary-h, 265));
+  --card-foreground: oklch(0.93 0 0);
+  --popover: oklch(0.13 0.02 var(--primary-h, 265));
+  --popover-foreground: oklch(0.93 0 0);
+  --border: oklch(0.25 0.02 var(--primary-h, 265));
+  --input: oklch(0.20 0.02 var(--primary-h, 265));
+  --ring: var(--primary);
+  --muted: oklch(0.20 0.02 var(--primary-h, 265));
   --muted-foreground: oklch(0.60 0 0);
-  --secondary: oklch(0.16 0.01 var(--primary-h, 250));
-  --secondary-foreground: oklch(0.92 0 0);
-  --accent: oklch(0.16 0.02 var(--primary-h, 250));
-  --accent-foreground: oklch(0.92 0 0);
-  --sidebar: oklch(0.10 0.01 var(--primary-h, 250));
+  --secondary: oklch(0.16 0.02 var(--primary-h, 265));
+  --secondary-foreground: oklch(0.93 0 0);
+  --sidebar: oklch(0.08 0.02 var(--primary-h, 265));
   --sidebar-foreground: oklch(0.85 0 0);
   --sidebar-border: oklch(1 0 0 / 0.08);
-  --sidebar-bg: oklch(0.10 0.01 var(--primary-h, 250));
-  --section-dark: oklch(0.06 0.02 var(--primary-h, 250));
-  --surface-hover: oklch(1 0 0 / 0.05);
-  --surface-active: oklch(1 0 0 / 0.08);
+  --sidebar-bg: oklch(0.08 0.02 var(--primary-h, 265));
+  --section-dark: oklch(0.10 0.02 var(--primary-h, 265));
+  --surface-hover: oklch(0.15 0.04 var(--primary-h, 265));
+  --surface-active: oklch(0.18 0.04 var(--primary-h, 265));
   --card-border-width: 1px;
   --card-shadow: 0 0 0 1px oklch(1 0 0 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.08);
-  --card-shadow-hover: 0 0 0 1px oklch(1 0 0 / 0.12), 0 4px 16px oklch(0 0 0 / 0.30);
+  --card-shadow-hover: 0 0 0 1px oklch(0.60 0.22 265 / 0.30), 0 4px 16px oklch(0 0 0 / 0.35);
   --card-hover-transform: none;
-  --page-padding: 2rem;
-  --content-padding: 2rem;
-  --grid-gap: 1rem;
-  --section-gap: 2rem;
+  /* Compact density for engineering toolchain */
+  --page-padding: 1rem;
+  --content-padding: 1rem;
+  --card-padding: 1rem;
+  --card-padding-sm: 0.75rem;
+  --grid-gap: 0.75rem;
+  --section-gap: 1rem;
+  --nav-item-py: 0.375rem;
+  --sidebar-width: 16rem;
+  --header-height: 2.75rem;
   --heading-weight: 600;
   --heading-tracking: -0.02em;
-  --dur-fast: 120ms;
-  --dur-normal: 200ms;
+  --body-leading: 1.5;
+  /* Instant motion — 60-100ms ease-out */
+  --dur-fast: 60ms;
+  --dur-normal: 100ms;
   --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
   --t-interactive: var(--dur-fast) var(--ease-snappy);
 }
@@ -756,6 +753,19 @@
 }
 
 /* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes fade-up-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up-in {
+  animation-name: fade-up-in;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+/* ============================================================
    GLOBAL BASE STYLES
    ============================================================ */
 @layer base {
@@ -885,6 +895,50 @@
   [data-theme="brand-forward"] .aesthetic-card:active {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 oklch(0.10 0 0);
+  }
+
+  /* ── Dark Premium — .dark-card ───────────────────────────────
+     Elevated glass surface for stat cards and panel sections.
+     Inner top-edge highlight reads as surface depth on dark bg.
+     Hover: primary-tinted ring replaces generic white glow.     */
+  .dark-card {
+    background: oklch(0.13 0.02 265);
+    border: 1px solid oklch(1 0 0 / 0.08);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 0.08),
+      0 0 0 1px oklch(1 0 0 / 0.04);
+    border-radius: var(--radius);
+    transition:
+      border-color var(--t-interactive),
+      box-shadow var(--t-interactive);
+  }
+  .dark-card:hover {
+    border-color: oklch(0.60 0.22 265 / 0.30);
+    box-shadow:
+      inset 0 1px 0 oklch(1 0 0 / 0.10),
+      0 0 0 1px oklch(0.60 0.22 265 / 0.20),
+      0 4px 16px oklch(0 0 0 / 0.35);
+  }
+
+  /* ── Dark Premium — glow focus ring ─────────────────────────
+     Focus-visible on interactive elements emits a soft indigo glow
+     instead of the default ring. Reads as primary affordance cue. */
+  [data-theme="dark-premium"] *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px oklch(0.60 0.22 265 / 0.50);
+  }
+
+  /* ── Dark Premium — primary glow badge ───────────────────────
+     Used for active status dots, live indicators.               */
+  .glow-primary {
+    box-shadow: 0 0 8px oklch(0.60 0.22 265 / 0.60);
+  }
+
+  /* ── Mono metric — Geist Mono for all data values ─────────── */
+  .metric-value {
+    font-family: var(--font-mono, var(--font-geist-mono));
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
   }
 
 }
